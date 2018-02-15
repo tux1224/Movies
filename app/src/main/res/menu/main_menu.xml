@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    app:showAsAction="ifRoom"
+    android:id="@+id/popular"
+    android:title="@string/pupular_menu"
+    android:orderInCategory="1"
+    />
+    <item
+    app:showAsAction="ifRoom"
+    android:id="@+id/rate"
+    android:title="@string/rate_menu"
+    android:orderInCategory="2"
+    />
+    <item
+    app:showAsAction="ifRoom"
+    android:id="@+id/fav"
+    android:title="@string/fav_menu"
+    android:orderInCategory="3"
+    />
+</menu>

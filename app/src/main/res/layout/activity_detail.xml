@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    >
+        <android.support.design.widget.CoordinatorLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primaryGray"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:theme="@style/AppTheme.ToolbarStyle"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin" />
+
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include
+                        android:id="@+id/poster_layout2"
+                        layout="@layout/poster_layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/poster_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <include
+                        android:id="@+id/poster_layout"
+                        layout="@layout/poster_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                        <TextView
+                            android:id="@+id/show_message_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/error_message_displaying_data"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
+
+                        <FrameLayout
+                            android:id="@+id/opacity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/balack_transparent_more"
+                            android:visibility="invisible">
+
+                            <ProgressBar
+                                android:id="@+id/pb_loading_indicator"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="8dp"
+                                android:visibility="invisible"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:layout_editor_absoluteY="101dp" />
+
+
+                        </FrameLayout>
+
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/f_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/fab"
+                app:layout_anchor="@+id/nestedScrollView"
+                app:layout_anchorGravity="right|center" />
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
