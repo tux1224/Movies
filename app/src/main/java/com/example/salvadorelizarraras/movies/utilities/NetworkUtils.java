@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.example.salvadorelizarraras.movies.BuildConfig;
 import com.example.salvadorelizarraras.movies.R;
 
 import java.io.ByteArrayOutputStream;
@@ -31,7 +32,7 @@ public final class NetworkUtils  {
 
     //region static values
 
-    public static final String STATIC_API_KEY  = "f91acd1c7d6f95c995f9ce29dbef1304";
+    public static final String STATIC_API_KEY  = BuildConfig.THE_MOVIE_DB_API_TOKEN;
     public static final String STATIC_SCHEME ="http";
     public static final String STATIC_SECURE_SCHEME ="https";
     public static final String STATIC_MOVIES_P_R = "api.themoviedb.org";
@@ -69,29 +70,29 @@ public final class NetworkUtils  {
     public static  Uri buildUri(@NonNull ContentValues values){
         Uri uri= null;
         String uriString = "";
-                String request = values.getAsString(REQUEST);
+        String request = values.getAsString(REQUEST);
 
-            switch (request) {
+        switch (request) {
 
-                case INSERT_DB:
-                    uriString = MovieDb.MovieEntry.CONTENT_URI.toString();
-                    break;
-                case DELTE_DB:
-                    uriString = MovieDb.MovieEntry.CONTENT_URI.buildUpon().appendPath(values.getAsString(DELTE_DB)).toString();
-                    break;
+            case INSERT_DB:
+                uriString = MovieDb.MovieEntry.CONTENT_URI.toString();
+                break;
+            case DELTE_DB:
+                uriString = MovieDb.MovieEntry.CONTENT_URI.buildUpon().appendPath(values.getAsString(DELTE_DB)).toString();
+                break;
 
-                case SELECT_ONE_DB:
-                    uriString = MovieDb.MovieEntry.CONTENT_URI.buildUpon().appendPath(values.getAsString(SELECT_ONE_DB)).toString();
-                    break;
-                    case SELECT_ALL_DB:
-                     uriString = MovieDb.MovieEntry.CONTENT_URI.toString();
-                    break;
-            }
-            try {
-                uri = Uri.parse(uriString);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            case SELECT_ONE_DB:
+                uriString = MovieDb.MovieEntry.CONTENT_URI.buildUpon().appendPath(values.getAsString(SELECT_ONE_DB)).toString();
+                break;
+            case SELECT_ALL_DB:
+                uriString = MovieDb.MovieEntry.CONTENT_URI.toString();
+                break;
+        }
+        try {
+            uri = Uri.parse(uriString);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         Log.v(TAG, "Uri Builded ---> " +uri.toString());
 
         return uri;
@@ -106,7 +107,7 @@ public final class NetworkUtils  {
 
         switch (request){
 
-                case STATIC_POPULAR:
+            case STATIC_POPULAR:
                 uriBuilder.scheme(STATIC_SCHEME);
                 uriBuilder.authority(STATIC_MOVIES_P_R);
                 uriBuilder.appendPath(STATIC_MOVIES_3);
@@ -140,7 +141,7 @@ public final class NetworkUtils  {
                 uriBuilder.appendQueryParameter(STATIC_VIDEO,values.getAsString(STATIC_VIDEO_KEY));
                 break;
 
-                case STATIC_VIDEOS:
+            case STATIC_VIDEOS:
                 uriBuilder.scheme(STATIC_SCHEME);
                 uriBuilder.authority(STATIC_MOVIES_P_R);
                 uriBuilder.appendPath(STATIC_MOVIES_3);
@@ -149,9 +150,9 @@ public final class NetworkUtils  {
                 uriBuilder.appendPath(STATIC_VIDEOS);
                 uriBuilder.appendQueryParameter(STATIC_API_KEY_PARAM,STATIC_API_KEY);
                 break;
-                
 
-                case STATIC_REVIEWS:
+
+            case STATIC_REVIEWS:
                 uriBuilder.scheme(STATIC_SCHEME);
                 uriBuilder.authority(STATIC_MOVIES_P_R);
                 uriBuilder.appendPath(STATIC_MOVIES_3);
@@ -284,5 +285,5 @@ public final class NetworkUtils  {
             connection.disconnect();
         }
 
-     }
+    }
 }
